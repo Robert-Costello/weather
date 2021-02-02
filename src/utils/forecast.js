@@ -20,10 +20,10 @@ const forecast = (latitude, longitude, callback) => {
   });
 };
 
-const test = async () => {
+const test = async (latitude, longitude) => {
   try {
     const response = await axios.get(
-      `http://api.weatherstack.com/current?access_key=${key}&query=22,-77&units=f`
+      `http://api.weatherstack.com/current?access_key=${key}&query=${latitude},${longitude}&units=f`
     );
     console.log(response.data);
   } catch (error) {
@@ -31,6 +31,6 @@ const test = async () => {
   }
 };
 
-test();
+// test(22, -77);
 
 module.exports = {forecast};
