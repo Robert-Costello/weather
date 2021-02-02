@@ -41,7 +41,7 @@ app.get('/help', (req, res, next) => {
 });
 
 app.get('/weather', (req, res, next) => {
-  res.setTimeout(15000, function () {
+  res.setTimeout(10000, function () {
     res.send({error: 'Request has timed out. Please try again.'});
   });
 
