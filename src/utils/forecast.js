@@ -1,5 +1,7 @@
 const request = require('postman-request');
+const axios = require('axios');
 const {key} = require('../../secrets');
+const {response} = require('express');
 
 const forecast = (latitude, longitude, callback) => {
   const url = `http://api.weatherstack.com/current?access_key=${key}&query=${latitude},${longitude}&units=f`;
@@ -18,4 +20,17 @@ const forecast = (latitude, longitude, callback) => {
   });
 };
 
-module.exports = forecast;
+const test = async () => {
+  try {
+    const response = await axios.get(
+      `http://api.weatherstack.com/current?access_key=${key}&query=22,-77&units=f`
+    );
+    console.log(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+test();
+
+module.exports = {forecast};
